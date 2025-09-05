@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Management</title>
+</head>
+<body>
+<h1>Input section</h1>
+<form id="stu">
+<table border=1>
+<tr>
+<td><label for="name">Name:</label></td>
+<td><input type="text" name="name" id="name" required></td>
+</tr>
+<tr>
+<td><label for="age">Age:</label></td>
+<td><input type="number" name="age" id="age"></td>
+</tr>
+<tr>
+<td><label for="gender">Gender:</label></td>
+<td><input type="radio" value="Male" name="gender" id="male" required>
+<label for="male">Male</label>
+<input type="radio" value="Female" name="gender" id="female">
+<label for="female">Female</label></td>
+</tr>
+<tr>
+<td><label for="course">Course:</label></td>
+<td><input type="text" name="course" id="course"></td>
+</tr>
+<tr>
+<td><label for="email">Email:</label></td>
+<td><input type="text" name="email" id="email" required></td>
+</tr>
+</table>
+<input type="submit" onclick="put()" value="Submit">
+</form>
+<h1>Student Table</h1>
+<table border=1>
+<thead>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Course</th>
+<th>Email</th>
+<th>Optional</th>
+</thead>
+<tbody id="tab">
+
+</tbody>
+</table>
+<script>
+var f=document.getElementById("stu")
+f.addEventListener("submit",put)
+function put(event){
+event.preventDefault()
+var n=document.getElementById("name").value
+var a=document.getElementById("age").value
+var g=document.querySelector("input[name='gender']:checked").value
+var c=document.getElementById("course").value
+var e=document.getElementById("email").value
+var row=document.createElement("tr")
+function add(value){
+var td=document.createElement("td")
+td.innerHTML=value
+row.appendChild(td)
+}
+add(n)
+add(a)
+add(g)
+add(c)
+add(e)
+var del=document.createElement("button")
+del.setAttribute("onclick","deleteRow(event)")
+del.textContent="Delete"
+del.style.color='white'
+del.style.backgroundColor='red'
+row.append(del)
+var tab=document.getElementById("tab")
+tab.appendChild(row)
+document.getElementById("stu").reset()
+}
+function deleteRow(event){
+event.target.closest('tr').remove()
+}
+</script>
+</body>
+</html>
