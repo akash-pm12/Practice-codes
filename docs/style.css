@@ -147,7 +147,7 @@ body{
 }
 
 .plusbutton{
-    position: absolute;
+    position: fixed;
     right:30px;
     bottom:30px;
     width:70px;
@@ -160,3 +160,4 @@ body{
     background-color: white;
     z-index: 3;
 }
+
